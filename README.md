@@ -104,3 +104,4 @@ labelled explicitly in each card's working steps so it's clear which is which.
 - All the math is done in `app.py`; the JavaScript never calculates anything
   itself, it only displays what the backend sends back.
 # HypothesisLab
+# HypothesisLab
