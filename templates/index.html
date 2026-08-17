@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hypothesis Testing Lab</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="grid-overlay" aria-hidden="true"></div>
+
+<header class="site-head">
+  <div class="head-inner">
+    <div class="brand">
+      <span class="brand-mark">Σ</span>
+      <div class="brand-text">
+        <h1>Hypothesis Testing Lab</h1>
+        <p>Two samples in, seven readouts out — every figure shown with its working.</p>
+      </div>
+    </div>
+    <div class="legend">
+      <span class="legend-item"><i class="dot dot-a"></i>Sample A</span>
+      <span class="legend-item"><i class="dot dot-b"></i>Sample B</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="intake" aria-label="Data intake">
+    <form id="intake-form">
+      <div class="sample-panel panel-a">
+        <div class="panel-label">
+          <span class="index">01</span>
+          <div>
+            <h2>Sample A</h2>
+            <p>Enter values separated by commas, spaces, or new lines.</p>
+          </div>
+        </div>
+        <textarea id="dataset-a" placeholder="e.g. 12, 15, 11, 18, 14, 12, 19" spellcheck="false"></textarea>
+        <div class="panel-meta"><span id="count-a">0</span> values detected</div>
+      </div>
+
+      <div class="sample-panel panel-b">
+        <div class="panel-label">
+          <span class="index">02</span>
+          <div>
+            <h2>Sample B</h2>
+            <p>Enter values separated by commas, spaces, or new lines.</p>
+          </div>
+        </div>
+        <textarea id="dataset-b" placeholder="e.g. 9, 13, 10, 16, 12, 10, 15" spellcheck="false"></textarea>
+        <div class="panel-meta"><span id="count-b">0</span> values detected</div>
+      </div>
+
+      <div class="alpha-row">
+        <label for="alpha-select">Significance level (α) for the t-test / z-test</label>
+        <select id="alpha-select">
+          <option value="0.10">0.10</option>
+          <option value="0.05" selected>0.05</option>
+          <option value="0.01">0.01</option>
+        </select>
+      </div>
+
+      <div class="run-row">
+        <button type="submit" id="run-btn">
+          <span class="btn-label">Run analysis</span>
+          <span class="btn-sub">mean · median · mode · deviation · variance · std dev · CV · t-test · z-test</span>
+        </button>
+        <p class="error-msg" id="error-msg" role="alert"></p>
+      </div>
+    </form>
+  </section>
+
+  <section class="readouts" id="readouts" aria-live="polite">
+    <!-- Result cards injected here by script.js -->
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <p>Calculations run server-side in Python · rendered here for a stats project on hypothesis testing.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
